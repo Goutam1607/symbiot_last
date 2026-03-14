@@ -307,6 +307,10 @@ const App: React.FC = () => {
             <a href="#faq" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>FAQ</a>
             <a href="#contact" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Contact</a>
             <a href="https://unstop.com/p/symbiot-2026-vidyavardhaka-college-of-engineering-mysore-1652707" target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ marginTop: '1rem' }}>Register</a>
+            <div className="mobile-logos-row">
+              <img src="/vvce-logo.png" alt="VVCE Logo" className="mobile-footer-logo" />
+              <img src="/ece-logo.png" alt="ECE Logo" className="mobile-footer-logo" />
+            </div>
           </div>
         </div>
       </nav>

@@ -69,6 +69,16 @@ const CircuitBackground: React.FC = () => {
     };
     window.addEventListener('mousemove', handleMouseMove);
 
+    // Touch support — update position on every touchmove/touchstart
+    const handleTouch = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        const t = e.touches[0];
+        mouseRef.current = { x: t.clientX, y: t.clientY };
+      }
+    };
+    window.addEventListener('touchstart', handleTouch, { passive: true });
+    window.addEventListener('touchmove', handleTouch, { passive: true });
+
     // Perpendicular distance from point to segment
     const distToSeg = (px: number, py: number, s: Segment) => {
       const dx = s.x2 - s.x1;
@@ -184,6 +194,8 @@ const CircuitBackground: React.FC = () => {
       cancelAnimationFrame(rafRef.current);
       window.removeEventListener('resize', resize);
       window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('touchstart', handleTouch);
+      window.removeEventListener('touchmove', handleTouch);
     };
   }, []);
 
