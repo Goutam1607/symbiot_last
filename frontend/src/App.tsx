@@ -814,7 +814,7 @@ const App: React.FC = () => {
       <footer id="contact" className="footer-redesigned">
         <div className="footer-main">
           {/* Column 1: Logo */}
-          <div className="footer-col footer-col-logo">
+          <div className="footer-col footer-col-logo" style={{ textAlign: 'center', alignItems: 'center' }}>
             <img src="/symbiot-teal-logo.png" alt="Symbiot Logo" className="footer-main-logo" />
           </div>
 
@@ -860,7 +860,7 @@ const App: React.FC = () => {
               <div className="contact-card">
                 <div className="contact-avatar">GO</div>
                 <div className="contact-info">
-                  <div className="contact-name">Goutam</div>
+                  <div className="contact-name">K Goutam</div>
                   <div className="contact-email">Kgoutam12504@gmail.com</div>
                   <div className="contact-phone">+917646903404</div>
                 </div>
@@ -896,11 +896,7 @@ const App: React.FC = () => {
               </div>
             </div>
 
-            <div className="social-icons" style={{ marginTop: '1rem', justifyContent: 'flex-start' }}>
-              <a href="https://www.instagram.com/iotcrew.vvce/" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Instagram">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" x2="17.51" y1="6.5" y2="6.5" /></svg>
-              </a>
-            </div>
+
           </div>
         </div>
 
