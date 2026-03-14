@@ -154,7 +154,7 @@ const App: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activePopup, setActivePopup] = useState<string | null>(null);
+
   const [psFilter, setPsFilter] = useState<string | undefined>(undefined);
   const [mobilePsOpen, setMobilePsOpen] = useState(false);
   const [activeTrophy, setActiveTrophy] = useState<string | null>(null);
@@ -170,18 +170,12 @@ const App: React.FC = () => {
     setActiveFaq(activeFaq === index ? null : index);
   };
 
-  const handlePopupToggle = (e: React.MouseEvent, type: string) => {
-    e.preventDefault();
-    setActivePopup(activePopup === type ? null : type);
-  };
 
   // Close popup or modal if clicked outside
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      if (!target.closest('.contact-popup-container')) {
-        setActivePopup(null);
-      }
+
       if (!target.closest('.trophy-modal') && !target.closest('.trophy-card')) {
         setActiveTrophy(null);
       }
@@ -850,40 +844,59 @@ const App: React.FC = () => {
           <div className="footer-divider hidden-mobile"></div>
 
           {/* Column 4: Connect With Us */}
-          <div className="footer-col footer-col-social">
+          <div className="footer-col footer-col-social" style={{ flex: 2 }}>
             <h4 className="footer-heading">Connect With Us</h4>
-            <div className="social-icons">
-
-              <div className="contact-popup-container">
-                <a href="#" className="social-icon" aria-label="Phone" onClick={(e) => handlePopupToggle(e, 'phone')}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /><path d="M14.05 2a9 9 0 0 1 8 7.94" /><path d="M14.05 6A5 5 0 0 1 18 10" /></svg>
-                </a>
-                <div className={`contact-popup ${activePopup === 'phone' ? 'show' : ''}`}>
-                  <div className="popup-title">Registration Co-Lead</div>
-                  <div className="popup-value">K Goutam<br />+91 7646903404</div>
+            
+            <div className="contact-cards-grid">
+              <div className="contact-card">
+                <div className="contact-avatar">NA</div>
+                <div className="contact-info">
+                  <div className="contact-name">Namratha N S</div>
+                  <div className="contact-email">namrathans202@gmail.com</div>
+                  <div className="contact-phone">+919019755706</div>
                 </div>
               </div>
 
-              <div className="contact-popup-container">
-                <a href="#" className="social-icon" aria-label="Email" onClick={(e) => handlePopupToggle(e, 'email')}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg>
-                </a>
-                <div className={`contact-popup ${activePopup === 'email' ? 'show' : ''}`}>
-                  <div className="popup-title">Queries & Support</div>
-                  <div className="popup-value">symbiot@vvce.ac.in</div>
+              <div className="contact-card">
+                <div className="contact-avatar">GO</div>
+                <div className="contact-info">
+                  <div className="contact-name">Goutam</div>
+                  <div className="contact-email">Kgoutam12504@gmail.com</div>
+                  <div className="contact-phone">+917646903404</div>
                 </div>
               </div>
 
-              <div className="contact-popup-container">
-                <a href="#" className="social-icon" aria-label="Location" onClick={(e) => handlePopupToggle(e, 'location')}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg>
-                </a>
-                <div className={`contact-popup ${activePopup === 'location' ? 'show' : ''}`}>
-                  <div className="popup-title">Venue</div>
-                  <div className="popup-value" style={{ fontSize: '0.95rem' }}>VVCE 3rd stage, Gokulam,<br />Mysore - 570002</div>
+              <div className="contact-card">
+                <div className="contact-avatar">PR</div>
+                <div className="contact-info">
+                  <div className="contact-name">Praveen M S</div>
+                  <div className="contact-email">praveenms588@gmail.com</div>
+                  <div className="contact-phone">+919036810588</div>
                 </div>
               </div>
 
+              <div className="contact-card">
+                <div className="contact-avatar">DH</div>
+                <div className="contact-info">
+                  <div className="contact-name">Dhanush S</div>
+                  <div className="contact-email">dhanushs193@gmail.com</div>
+                  <div className="contact-phone">+919742615796</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="contact-general-info">
+              <div className="general-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg>
+                <span>symbiot@vvce.ac.in</span>
+              </div>
+              <div className="general-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg>
+                <span>H Kempegowda Sports complex vvce mysuru</span>
+              </div>
+            </div>
+
+            <div className="social-icons" style={{ marginTop: '1rem', justifyContent: 'flex-start' }}>
               <a href="https://www.instagram.com/iotcrew.vvce/" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Instagram">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" x2="17.51" y1="6.5" y2="6.5" /></svg>
               </a>

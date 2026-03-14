@@ -3297,3 +3297,102 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* ── Contact Cards in Footer ── */
+.contact-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(0, 240, 255, 0.04);
+  border: 1px solid rgba(0, 240, 255, 0.12);
+  border-radius: 10px;
+  padding: 0.75rem;
+  transition: border-color 0.25s, background 0.25s;
+}
+
+.contact-card:hover {
+  background: rgba(0, 240, 255, 0.08);
+  border-color: rgba(0, 240, 255, 0.3);
+}
+
+.contact-avatar {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #0ea5ea, #0668d0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.contact-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.contact-email {
+  font-size: 0.72rem;
+  color: rgba(0, 240, 255, 0.7);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.contact-phone {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* General info strip (email + venue) */
+.contact-general-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.9rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid rgba(0, 240, 255, 0.1);
+}
+
+.general-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.4;
+}
+
+.general-item svg {
+  flex-shrink: 0;
+  stroke: #00f0ff;
+  margin-top: 2px;
+}
+
+/* Mobile adjustments for contact cards */
+@media (max-width: 768px) {
+  .contact-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
