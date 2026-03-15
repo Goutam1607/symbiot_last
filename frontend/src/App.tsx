@@ -278,8 +278,8 @@ const App: React.FC = () => {
             <a href="#sponsors" className="nav-link">Sponsors</a>
             <a href="#faq" className="nav-link">FAQ</a>
             <a href="#contact" className="nav-link">Contact</a>
-            <a href="https://unstop.com/p/symbiot-2026-vidyavardhaka-college-of-engineering-mysore-1652707" target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ padding: '0.5rem 1.5rem', fontSize: '0.875rem' }}>Register</a>
             <img src="/ece-logo.png" alt="ECE Department Logo" className="navbar-logo ece" />
+            <img src="/ieee-logo.webp" alt="IEEE Logo" className="navbar-logo ieee" />
           </div>
 
           <button className={`mobile-menu-btn ${isMobileMenuOpen ? 'open' : ''}`} onClick={toggleMobileMenu}>

@@ -686,6 +686,22 @@ h1, h2, h3, h4, h5, h6 {
   filter: drop-shadow(0 0 8px rgba(0, 180, 255, 0.45));
 }
 
+.navbar-logo.ieee {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+  margin-left: 0.5rem;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  background: #fff;
+  border-radius: 6px;
+  padding: 2px 5px;
+}
+
+.navbar-logo.ieee:hover {
+  transform: scale(1.08);
+  filter: drop-shadow(0 0 8px rgba(0, 100, 200, 0.5));
+}
+
 .brand-text {
   font-family: 'Vampire Wars', 'Outfit', sans-serif;
   font-weight: 400;
@@ -890,22 +906,22 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn-primary {
   background: transparent;
-  color: var(--accent-blue);
-  border: 1px solid var(--accent-blue);
-  box-shadow: 0 0 10px rgba(26, 86, 219, 0.4), inset 0 0 10px rgba(26, 86, 219, 0.2);
+  color: var(--accent-cyan);
+  border: 1.5px solid var(--accent-cyan);
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.4), inset 0 0 10px rgba(0, 240, 255, 0.15);
   border-radius: 4px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  text-shadow: 0 0 5px rgba(26, 86, 219, 0.5);
+  text-shadow: 0 0 6px rgba(0, 240, 255, 0.6);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 25px rgba(0, 240, 255, 0.6), inset 0 0 15px rgba(0, 240, 255, 0.4);
-  border-color: var(--accent-cyan);
-  background: rgba(0, 240, 255, 0.1);
+  box-shadow: 0 0 28px rgba(0, 240, 255, 0.7), inset 0 0 18px rgba(0, 240, 255, 0.35);
+  border-color: #fff;
+  background: rgba(0, 240, 255, 0.12);
   color: #fff;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.9);
 }
 
 .btn-secondary {
