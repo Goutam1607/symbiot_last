@@ -279,7 +279,7 @@ const App: React.FC = () => {
             <a href="#faq" className="nav-link">FAQ</a>
             <a href="#contact" className="nav-link">Contact</a>
             <img src="/ece-logo.png" alt="ECE Department Logo" className="navbar-logo ece" />
-            <img src="/ieee-logo.webp" alt="IEEE Logo" className="navbar-logo ieee" />
+            <img src="/ieee-logo.png" alt="IEEE Logo" className="navbar-logo ieee" />
           </div>
 
           <button className={`mobile-menu-btn ${isMobileMenuOpen ? 'open' : ''}`} onClick={toggleMobileMenu}>
