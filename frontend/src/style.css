@@ -3401,23 +3401,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .general-item svg {
-  }
-}
-
-@media (max-width: 480px) {
-  .ps-filter-btn {
-    padding: 0.4rem 0.9rem;
-    font-size: 0.78rem;
-  }
-
-  .ps-section {
-    padding: 80px 1rem 40px;
-  }
-
-  .ps-controls-sticky {
-    margin: 0 -1rem;
-    padding: 0.6rem 1rem;
-  }
+  flex-shrink: 0;
+  stroke: #00f0ff;
+  margin-top: 2px;
 }
 
 /* --- Mobile Responsive Optimizations (Global UI Scaling) --- */
