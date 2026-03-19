@@ -23,10 +23,11 @@ const SectionDivider: React.FC = () => (
 const TrophyCard: React.FC<{
   domain: string;
   prizeAmount?: string;
+  bannerLabel?: string;
   onClick: () => void;
-}> = ({ domain, prizeAmount = '₹25,000', onClick }) => {
+}> = ({ domain, prizeAmount = '₹25,000', bannerLabel = 'PRIZE POOL', onClick }) => {
   return (
-    <div 
+    <div
       className="trophy-card"
       onClick={(e) => {
         e.stopPropagation();
@@ -34,7 +35,7 @@ const TrophyCard: React.FC<{
       }}
     >
       <div className="trophy-card-banner">
-        <span className="banner-label">PRIZE POOL</span>
+        <span className="banner-label">{bannerLabel}</span>
         <span className="banner-amount">{prizeAmount}</span>
       </div>
       <div className="trophy-card-glow"></div>
@@ -63,37 +64,56 @@ const TrophyModal: React.FC<{
 
   if (!domain) return null;
 
+  const isExtraAward = domain === "Best Women Team" || domain === "Best Innovation" || domain === "Participation";
+
   return (
     <div className="trophy-modal-overlay" onClick={onClose}>
       <div className="trophy-modal" onClick={(e) => e.stopPropagation()}>
         <button className="trophy-modal-close" onClick={onClose}>✕</button>
         <div className="trophy-modal-icon">🏆</div>
-        <h2 className="trophy-modal-title">{domain} <span>Winner</span></h2>
+        <h2 className="trophy-modal-title">{domain} {isExtraAward ? '' : <span>Winner</span>}</h2>
         <div className="trophy-modal-content">
-          <div className="prize-tier">
-            <div className="prize-tier-header">
-              <h4>1st Prize</h4>
-              <span className="prize-amt">₹15K</span>
+          {!isExtraAward ? (
+            <>
+              <div className="prize-tier">
+                <div className="prize-tier-header">
+                  <h4>1st Prize</h4>
+                  <span className="prize-amt">₹15K</span>
+                </div>
+                <ul>
+                  <li><span className="detail-check">✓</span>₹15,000 Cash Prize</li>
+                  <li><span className="detail-check">✓</span>IEEE Participation Certificate</li>
+                  <li><span className="detail-check">✓</span>Electronic Kit + Subscriptions</li>
+                  <li><span className="detail-check">✓</span>Exciting Goodies</li>
+                </ul>
+              </div>
+              <div className="prize-tier">
+                <div className="prize-tier-header">
+                  <h4>2nd Prize</h4>
+                  <span className="prize-amt">₹10K</span>
+                </div>
+                <ul>
+                  <li><span className="detail-check">✓</span>₹10,000 Cash Prize</li>
+                  <li><span className="detail-check">✓</span>IEEE Participation Certificate</li>
+                  <li><span className="detail-check">✓</span>Electronic Kit + Subscriptions</li>
+                  <li><span className="detail-check">✓</span>Exciting Goodies</li>
+                </ul>
+              </div>
+            </>
+          ) : (
+            <div className="prize-tier">
+              <div className="prize-tier-header">
+                <h4>Rewards</h4>
+                <span className="prize-amt">{domain === "Participation" ? "Swags" : "₹5K"}</span>
+              </div>
+              <ul>
+                {domain !== "Participation" && <li><span className="detail-check">✓</span>₹5,000 Cash Prize</li>}
+                <li><span className="detail-check">✓</span>IEEE Certificate</li>
+                {domain === "Best Women Team" && <li><span className="detail-check">✓</span>Exciting Goodies</li>}
+                {domain !== "Best Women Team" && <li><span className="detail-check">✓</span>Exciting Goodies & Swags</li>}
+              </ul>
             </div>
-            <ul>
-              <li><span className="detail-check">✓</span>₹15,000 Cash Prize</li>
-              <li><span className="detail-check">✓</span>IEEE Participation Certificate</li>
-              <li><span className="detail-check">✓</span>Electronic Kit + Subscriptions</li>
-              <li><span className="detail-check">✓</span>Exciting Goodies</li>
-            </ul>
-          </div>
-          <div className="prize-tier">
-            <div className="prize-tier-header">
-              <h4>2nd Prize</h4>
-              <span className="prize-amt">₹10K</span>
-            </div>
-            <ul>
-              <li><span className="detail-check">✓</span>₹10,000 Cash Prize</li>
-              <li><span className="detail-check">✓</span>IEEE Participation Certificate</li>
-              <li><span className="detail-check">✓</span>Electronic Kit + Subscriptions</li>
-              <li><span className="detail-check">✓</span>Exciting Goodies</li>
-            </ul>
-          </div>
+          )}
         </div>
       </div>
     </div>
@@ -438,170 +458,6 @@ const App: React.FC = () => {
 
         <SectionDivider />
 
-        <section id="schedule" className="section">
-          <div className="section-header">
-            <h2 className="section-title">Event <span className="text-gradient">Schedule</span></h2>
-            <p className="section-subtitle">A tightly crafted 24-hour journey from onboarding to final showcase.</p>
-          </div>
-
-          <div className="timeline-container">
-
-            <div className="day-label">
-              <span className="day-dot"></span>
-              <h3>Friday</h3>
-            </div>
-
-            <div className="timeline-row row-1">
-              {/* 1 - Registration */}
-              <div className="timeline-stop">
-                <div className="stop-number">1</div>
-                <div className="stop-icon">📝</div>
-                <div className="stop-content">
-                  <h4>Registration</h4>
-                  <span>8:30 am</span>
-                </div>
-              </div>
-              <div className="timeline-connector"></div>
-
-              {/* 2 - Inauguration */}
-              <div className="timeline-stop">
-                <div className="stop-number">2</div>
-                <div className="stop-icon">⚡</div>
-                <div className="stop-content">
-                  <h4>Inauguration</h4>
-                  <span>9:30 am - 10:30 am</span>
-                </div>
-              </div>
-              <div className="timeline-connector"></div>
-
-              {/* 3 - Design Phase */}
-              <div className="timeline-stop">
-                <div className="stop-number">3</div>
-                <div className="stop-icon">🧠</div>
-                <div className="stop-content">
-                  <h4>Design phase</h4>
-                  <span>11:00 am - 1:00 pm</span>
-                </div>
-              </div>
-              <div className="timeline-connector"></div>
-
-              {/* 4 - Lunch */}
-              <div className="timeline-stop">
-                <div className="stop-number">4</div>
-                <div className="stop-icon">🍽️</div>
-                <div className="stop-content">
-                  <h4>Design Phase Ends & Lunch</h4>
-                  <span>1:00 pm - 2:00 pm</span>
-                </div>
-              </div>
-            </div>
-
-            {/* S-Curve Connector Right */}
-            <div className="s-curve-right"></div>
-
-            <div className="timeline-row row-2 reverse">
-              {/* 5 - High Tea */}
-              <div className="timeline-stop">
-                <div className="stop-number">5</div>
-                <div className="stop-icon">☕</div>
-                <div className="stop-content">
-                  <h4>High tea</h4>
-                  <span>4:30 pm</span>
-                </div>
-              </div>
-              <div className="timeline-connector reverse"></div>
-
-              {/* 6 - Dinner */}
-              <div className="timeline-stop">
-                <div className="stop-number">6</div>
-                <div className="stop-icon">🍲</div>
-                <div className="stop-content">
-                  <h4>Dinner</h4>
-                  <span>7:00 pm - 8:00 pm</span>
-                </div>
-              </div>
-              <div className="timeline-connector reverse"></div>
-
-              {/* 7 - Judgement 1 */}
-              <div className="timeline-stop">
-                <div className="stop-number">7</div>
-                <div className="stop-icon">⚖️</div>
-                <div className="stop-content">
-                  <h4>Phase II Judgement</h4>
-                  <span>8:00 pm</span>
-                </div>
-              </div>
-              <div className="timeline-connector reverse"></div>
-
-              {/* 8 - Mid Night Tea */}
-              <div className="timeline-stop">
-                <div className="stop-number">8</div>
-                <div className="stop-icon">🍵</div>
-                <div className="stop-content">
-                  <h4>High tea</h4>
-                  <span>12:00 am</span>
-                </div>
-              </div>
-            </div>
-
-            {/* S-Curve Connector Left */}
-            <div className="s-curve-left"></div>
-
-            <div className="day-label" style={{ marginTop: '2rem' }}>
-              <span className="day-dot"></span>
-              <h3>Saturday</h3>
-            </div>
-
-            <div className="timeline-row row-3">
-              {/* 9 - Breakfast */}
-              <div className="timeline-stop">
-                <div className="stop-number">9</div>
-                <div className="stop-icon">🥐</div>
-                <div className="stop-content">
-                  <h4>Breakfast</h4>
-                  <span>8:00 am</span>
-                </div>
-              </div>
-              <div className="timeline-connector"></div>
-
-              {/* 10 - Final Judgement */}
-              <div className="timeline-stop">
-                <div className="stop-number">10</div>
-                <div className="stop-icon">🤖</div>
-                <div className="stop-content">
-                  <h4>Final Judgement</h4>
-                  <span>11:00 am - 1:00 pm</span>
-                </div>
-              </div>
-              <div className="timeline-connector"></div>
-
-              {/* 11 - Lunch 2 */}
-              <div className="timeline-stop">
-                <div className="stop-number">11</div>
-                <div className="stop-icon">🍛</div>
-                <div className="stop-content">
-                  <h4>Lunch</h4>
-                  <span>1:00 pm</span>
-                </div>
-              </div>
-              <div className="timeline-connector"></div>
-
-              {/* 12 - Valedictory */}
-              <div className="timeline-stop">
-                <div className="stop-number">12</div>
-                <div className="stop-icon">🏆</div>
-                <div className="stop-content">
-                  <h4>Valedictory & tea</h4>
-                  <span>3:00 pm</span>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </section>
-
-        <SectionDivider />
-
         <ProblemStatements initialFilter={psFilter} />
 
         <SectionDivider />
@@ -630,44 +486,23 @@ const App: React.FC = () => {
             />
 
             {/* Additional Awards displayed below the trophies */}
-            <div className="extra-awards-container">
-              <div className="glass-panel extra-award-card">
-                <div className="extra-award-header cyan-glow">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                  <h4>Best Women Team</h4>
-                  <span className="extra-award-amount">₹5K</span>
-                </div>
-                <ul className="extra-award-details">
-                  <li><span className="detail-bullet"></span>₹5,000 Cash Prize</li>
-                  <li><span className="detail-bullet"></span>IEEE Certificate</li>
-                  <li><span className="detail-bullet"></span>Exciting Goodies</li>
-                </ul>
-              </div>
-
-              <div className="glass-panel extra-award-card">
-                <div className="extra-award-header cyan-glow">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 21h6"></path><path d="M12 21v-4"></path><path d="M16 11c0 3-4 5-4 5s-4-2-4-5a4 4 0 1 1 8 0z"></path></svg>
-                  <h4>Best Innovation</h4>
-                  <span className="extra-award-amount">₹5K</span>
-                </div>
-                <ul className="extra-award-details">
-                  <li><span className="detail-bullet"></span>₹5,000 Cash Prize</li>
-                  <li><span className="detail-bullet"></span>IEEE Certificate</li>
-                  <li><span className="detail-bullet"></span>Exciting Goodies & Swags</li>
-                </ul>
-              </div>
-
-              <div className="glass-panel extra-award-card">
-                <div className="extra-award-header cyan-glow">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg>
-                  <h4>Participation</h4>
-                  <span className="extra-award-amount">Swags</span>
-                </div>
-                <ul className="extra-award-details">
-                  <li><span className="detail-bullet"></span>IEEE Certificate</li>
-                  <li><span className="detail-bullet"></span>Exciting Goodies & Swags</li>
-                </ul>
-              </div>
+            <div className="trophy-container" style={{ marginTop: '2rem' }}>
+              <TrophyCard
+                domain="Best Women Team"
+                prizeAmount="₹5000"
+                onClick={() => setActiveTrophy("Best Women Team")}
+              />
+              <TrophyCard
+                domain="Best Innovation"
+                prizeAmount="₹5000"
+                onClick={() => setActiveTrophy("Best Innovation")}
+              />
+              <TrophyCard
+                domain="Participation"
+                prizeAmount="Swags"
+                bannerLabel="REWARDS"
+                onClick={() => setActiveTrophy("Participation")}
+              />
             </div>
           </div>
         </section>
@@ -808,7 +643,7 @@ const App: React.FC = () => {
             <div className="venue-glass-box">
               <p className="venue-date">24th – 25th April 2026</p>
               <p className="venue-name">Vidyavardhaka College of Engineering</p>
-              <p className="venue-address">3rd Stage, Gokulam<br />Mysore – 570002</p>
+              <p className="venue-address">Gokulam 3rd Stage,<br />Mysore – 570002</p>
             </div>
           </div>
 
@@ -827,7 +662,7 @@ const App: React.FC = () => {
           {/* Column 4: Connect With Us */}
           <div className="footer-col footer-col-social">
             <h4 className="footer-heading">Connect With Us</h4>
-            
+
             <div className="contact-cards-grid">
               <div className="contact-card">
                 <div className="contact-avatar">NA</div>
@@ -873,7 +708,7 @@ const App: React.FC = () => {
               </div>
               <div className="general-item">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg>
-                <span>H Kempegowda Sports complex vvce mysuru</span>
+                <span>H Kempegowda Sports Complex VVCE Mysore</span>
               </div>
               <div className="general-item">
                 <a href="https://www.instagram.com/iotcrew.vvce?igsh=MWd3YTEyeTNycnlxYw==" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: 'rgba(255,255,255,0.65)', textDecoration: 'none' }}>

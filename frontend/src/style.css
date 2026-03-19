@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
 @import url('https://fonts.cdnfonts.com/css/vampire-wars');
 
+* {
+  -webkit-tap-highlight-color: transparent !important;
+}
+
 :root {
   --bg-primary: #0a0a0c; /* Deep Charcoal/Black */
   --bg-secondary: #121418;
@@ -1495,7 +1499,7 @@ h1, h2, h3, h4, h5, h6 {
 .logo-container:hover .orbit-2,
 .orbit-elements:hover .orbit-2 {
   top: -6%; left: auto; right: -32%;
-  transform: translate(0, 0) scale(1);
+  transform: translateY(0) scale(1);
   margin: 0;
   cursor: pointer; pointer-events: auto;
   animation: fadeInFloat 0.45s 0.08s ease-out forwards;
@@ -1507,10 +1511,10 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateX(-50%) scale(1);
   margin: 0;
   cursor: pointer; pointer-events: auto;
-  animation: fadeInFloat 0.45s 0.16s ease-out forwards;
+  animation: fadeInFloatCenter 0.45s 0.16s ease-out forwards;
 }
 
-/* Fade-in + float keyframes */
+/* Fade-in + float keyframes for cards without X-centering */
 @keyframes fadeInFloat {
   from {
     opacity: 0;
@@ -1522,16 +1526,33 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* Fade-in + float keyframes for properly centered VLSI card */
+@keyframes fadeInFloatCenter {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(12px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+
 /* Individual Hover Effects post-expansion */
 .orbit-el:hover {
-  transform: translateY(-3px) scale(1.06) !important;
+  transform: translateY(-5px) scale(1.05) !important;
   border-color: var(--accent-cyan) !important;
   box-shadow: 0 8px 30px rgba(0, 240, 255, 0.2), 0 0 20px rgba(0, 240, 255, 0.12), inset 0 0 15px rgba(0, 240, 255, 0.06);
   background: linear-gradient(135deg, rgba(0, 240, 255, 0.08) 0%, rgba(10, 20, 40, 0.95) 100%);
 }
 
 .orbit-3:hover {
-  transform: translateX(-50%) translateY(-3px) scale(1.06) !important;
+  transform: translateY(-5px) scale(1.05) !important;
+}
+
+.orbit-el:active, .trophy-card:active {
+  transform: scale(0.97) !important;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 @keyframes pulse-glow {
@@ -1556,7 +1577,7 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
   }
   .hero-visual {
-    height: 350px;
+    height: 520px;
     margin-top: 1rem;
   }
   .logo-container {
@@ -1576,9 +1597,9 @@ h1, h2, h3, h4, h5, h6 {
     width: 18px;
     height: 18px;
   }
-  .logo-container:hover .orbit-1, .orbit-elements:hover .orbit-1 { top: -8%; left: -15%; }
-  .logo-container:hover .orbit-2, .orbit-elements:hover .orbit-2 { top: -8%; right: -15%; }
-  .logo-container:hover .orbit-3, .orbit-elements:hover .orbit-3 { bottom: -8%; left: 50%; transform: translateX(-50%) scale(1); }
+  .logo-container:hover .orbit-1, .orbit-elements:hover .orbit-1 { top: 100%; left: 50%; transform: translateX(-50%) scale(1); }
+  .logo-container:hover .orbit-2, .orbit-elements:hover .orbit-2 { top: 122%; left: 50%; transform: translateX(-50%) scale(1); }
+  .logo-container:hover .orbit-3, .orbit-elements:hover .orbit-3 { top: 144%; left: 50%; transform: translateX(-50%) scale(1); }
   .hero-title {
     font-size: 2.5rem;
   }
