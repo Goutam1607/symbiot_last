@@ -1580,7 +1580,7 @@ h1, h2, h3, h4, h5, h6 {
   .hero-visual {
     width: 100%;
     height: auto;
-    min-height: 440px;
+    min-height: 480px;
     margin-top: 1rem;
     margin-bottom: 3rem;
     display: flex;
@@ -1589,15 +1589,15 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
   }
   .logo-container {
-    width: 180px;
-    height: 180px;
+    width: 240px;
+    height: 240px;
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
   }
   .hero-main-logo {
-    width: 180px;
+    width: 240px;
   }
   .orbit-elements {
     position: absolute;
